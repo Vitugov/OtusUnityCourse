@@ -27,7 +27,7 @@ namespace ShootEmUp
 
         private void Fire() => FireEvent?.Invoke(_target.transform);
 
-        private bool ShouldFire(GameObject obj) => _target.GetComponent<IDamageable>().IsHitPointsExists();
+        private bool ShouldFire(GameObject obj) => _target.GetComponent<IHitPoints>().IsHitPointsExists();
 
         private void CreateFireHandler()
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public sealed class HitPointsComponent : MonoBehaviour, IDamageable
+    public sealed class HitPointsComponent : MonoBehaviour, IHitPoints
     {
         public event Action<GameObject> HpEmpty;
 

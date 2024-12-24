@@ -6,7 +6,7 @@ namespace ShootEmUp
 {
     public sealed class Bullet : MonoBehaviour
     {
-        public event Action<Bullet> UnspawnMe;
+        public event Action<Bullet> BulletWorkIsDone;
 
         [SerializeField] private OutOfBoundsNotifier _outOfBoundsNotifier;
         [SerializeField] private Rigidbody2D _rigidbody2D;
@@ -22,7 +22,7 @@ namespace ShootEmUp
             SetTeam(args.Config.IsPlayer);
             SetColor(args.Config.Color);
             SetDamage(args.Config.Damage);
-            _outOfBoundsNotifier.InitializeAndStart(levelBounds, () => UnspawnMe(this));
+            _outOfBoundsNotifier.InitializeAndStart(levelBounds, () => BulletWorkIsDone(this));
         }
 
         public void DeInitialize()
@@ -33,7 +33,7 @@ namespace ShootEmUp
         private void OnCollisionEnter2D(Collision2D collision)
         {
             _damagerComponent.DealDamage(collision.gameObject);
-            UnspawnMe?.Invoke(this);
+            BulletWorkIsDone?.Invoke(this);
         }
 
         private void SetVelocity(Vector2 velocity) => _rigidbody2D.velocity = velocity;

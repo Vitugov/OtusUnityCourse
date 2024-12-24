@@ -20,7 +20,7 @@ namespace ShootEmUp
                     return;
             }
 
-            if (target.TryGetComponent(out IDamageable damageableTarget))
+            if (target.TryGetComponent(out IHitPoints damageableTarget))
             {
                 damageableTarget.TakeDamage(_damage);
             }

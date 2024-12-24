@@ -19,12 +19,12 @@ namespace ShootEmUp
         {
             var bullet = _bulletPool.Get();
             bullet.Initialize(args, _levelBounds);
-            bullet.UnspawnMe += RemoveBullet;
+            bullet.BulletWorkIsDone += RemoveBullet;
         }
 
         private void RemoveBullet(Bullet bullet)
         {
-            bullet.UnspawnMe -= RemoveBullet;
+            bullet.BulletWorkIsDone -= RemoveBullet;
             bullet.DeInitialize();
             _bulletPool.Release(bullet);
         }
